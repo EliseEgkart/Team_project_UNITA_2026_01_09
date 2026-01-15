@@ -10,6 +10,6 @@
 
 
 ## Result
-![Sesor Fusion team img1](/img/4.jpg)
+![Sesor Fusion team img1](/img/unitA_2026_01_16_photo_sensor_fusion_01.jpg)
 
-![Sesor Fusion team img2](/img/5.jpg)
+![Sesor Fusion team img2](/img/unitA_2026_01_16_photo_sensor_fusion_02.jpg)

@@ -10,6 +10,6 @@
 
 
 ## Result
-![urdf_visualization img](/img/urdf_visualization.png)
+![urdf_visualization img](/img/unitA_2026_01_16_urdf_visualization.png)
 
-![urdf_team img](/img/7.jpg)
+![urdf_team img](/img/unitA_2026_01_16_photo_urdf_team.jpg)

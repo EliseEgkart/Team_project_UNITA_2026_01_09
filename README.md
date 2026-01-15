@@ -1,9 +1,9 @@
-# UNITA 2026.01.09-01.16 3차 기본교육
+# UNITA 2026.01.09-01.13 3차 기본교육
 
-Rviz2, TF, URDF, Camera좌표계, 내부 및 외부 파라미터 세팅에 대한 이론 기반의 강의를 수행함
+본 교육은 인지 기술을 실제 테스트 차량으로 확장하기 위한 사전 단계로, Rviz2/TF/URDF와 카메라 좌표계·파라미터 이해를 바탕으로 2D‑LiDAR·카메라 센서 퓨전, 의사결정 주행 로직, 차량·센서 URDF 모델링을 팀 프로젝트로 수행하며 동아리 전체의 인지·통합 구현 역량을 끌어올리는 데 목적이 있다.
 
 ## 참여 인원 및 일시 & 장소
-![image](img/1.jpg)
+![image](img/unitA_2026_01_09_cover.jpg)
 - **강의자**: 김형진  
 - **교육 보조**: 윤제호, 이기현(1회)  
 - **교육 참여자**:  
@@ -15,21 +15,21 @@ Rviz2, TF, URDF, Camera좌표계, 내부 및 외부 파라미터 세팅에 대�
 
 
 ## 교육 내용 정리
-세부강의 자료는 [pdf 자료](./UNITA2026_01_09.pdf) 참고
+세부 강의 자료는 [pdf 자료](./UNITA2026_01_09.pdf) 참고
 ### A. Rviz2
-1. **중앙 패널**: 데이터가 표시되는 3D 공간으로 회전/이동/확대·축소를 수행한다.
-2. **디스플레이 패널**: 시각화 요소를 추가·관리하며, Global Options에서 고정 프레임을 설정한다.
-3. **뷰 패널**: 중앙 패널의 시점을 전환한다.
-4. **Add 기능**: 시각화 가능한 다양한 요소를 선택해 추가한다.
-
+![Decision_pt img](/img/unitA_2026_01_09_diagram_01.png)
+1. **중앙 패널**: 3D 뷰에서 데이터 시각화와 회전/이동/확대·축소를 수행한다.
+2. **디스플레이 패널**: 시각화 항목을 추가·관리하고 Global Options에서 고정 프레임을 설정한다.
+3. **뷰 패널**: 카메라 시점을 전환하고 필요 시 저장·복원한다.
+4. **Add 기능**: 필요한 디스플레이 요소를 선택해 추가한다. 
 
 ### B. TF & URDF
-1. **TF 개요**: 로봇의 각 링크와 센서 간 좌표 변환을 표현한다.
-2. **TF Broadcaster**: 부모–자식 프레임 관계와 위치·자세 정보를 /tf 또는 /tf_static로 퍼블리시한다.
-3. **TF Listener**: 퍼블리시된 TF를 구독해 원하는 좌표 변환을 요청·사용한다.
-4. **TF Tree 확인**: `ros2 run tf2_tools view_frames`로 TF 트리를 확인하고 PDF로 저장한다.
-5. **URDF 역할**: 로봇의 링크/조인트 구조와 센서 배치를 정의하여 TF 브로드캐스트의 기준을 제공한다.
-
+![Decision_pt img](/img/unitA_2026_01_09_diagram_02.png)
+1. **TF 개요**: 로봇 링크와 센서 간 좌표 변환 관계를 표현한다.
+2. **TF Broadcaster**: 프레임 관계와 위치·자세를 /tf 또는 /tf_static로 퍼블리시한다.
+3. **TF Listener**: 퍼블리시된 TF를 구독해 좌표 변환을 조회·사용한다.
+4. **TF Tree 확인**: `ros2 run tf2_tools view_frames`로 트리를 확인하고 PDF로 저장한다.
+5. **URDF 역할**: 링크/조인트 구조와 센서 배치를 정의해 TF 기준을 제공한다.
 
 ### C. Camera
 #### 가. 카메라의 모델에서 사용되는 4가지 좌표계.
@@ -52,14 +52,16 @@ X, Y, Z 축으로 구성되며, Z축은 카메라가 바라보는 방향(optic a
 좌표의 원점 위치는 사용하는 그래픽/비전 라이브러리에 따라 다르며, OpenCV는 좌상단, OpenGL은 좌하단을 원점으로 사용한다.  
 이미지 좌표계를 픽셀 단위로 표현한 실용적인 좌표계라고 볼 수 있다.  
 
-#### 나. 내부파라미터(Intrinsic Parameter)란?
+#### 나. 카메라 파라미터란?
+![Decision_pt img](/img/unitA_2026_01_09_diagram_03.png)
+#### 내부파라미터(Intrinsic Parameter)란?
 카메라 렌즈와 이미지 센서 구조에 의해 결정되는 내부 파라미터로, 3차원 공간의 점이 이미지 평면에 투영될 때 이미지가 얼마나 이동하는지(2D Translation),  
 얼마나 확대·축소되는지(2D Scaling), 그리고 얼마나 기울어져 표현되는지(2D Shear)를 정의한다  
 1. 초점거리(Focal Length: fx, fy)
 2. 주점 (Principal Point: cx, cy)
 3. 비대칭 계수 (Skew Coefficient)
 
-#### 다. 외부파라미터(Extrinsic Parameter)란?
+#### 외부파라미터(Extrinsic Parameter)란?
 3D 공간에서 카메라가 실제로 어디에 위치해 있고(3D Translation), 어느 방향을 바라보고 있는지(3D Rotation)를 나타내는 파라미터로,  
 카메라 좌표계와 외부(월드 또는 로봇) 좌표계 사이의 공간적 관계를 설명한다.  
 외부 파라미터를 구하는 다양한 tool들이 있고, 연구들이 진행되고 있다.  
@@ -87,7 +89,7 @@ Score Board
   1. 이미지 위에 레이저 스캔 데이터가 투영되도록 구현한다.
   2. 학습된 객체의 거리를 측정 가능하도록 한다.
   3. 예시: 사람이 카메라에서 인식되면 사람-카메라 간 거리를 산출한다.
-- **활동 이미지**: ![Sesor Fusion team img](/img/0109_1.jpg)
+- **활동 이미지**: ![Sesor Fusion team img](/img/unitA_2026_01_09_activity_sensor_fusion.jpg)
 - **결과 보고서**: [결과](./2DLiDAR_camera_sensor_fusion/README.md)
 
 
@@ -100,7 +102,7 @@ Score Board
   3. 장애물 회피
   4. 장애물 감지 시 정지
 - **발표 일정**: 16:30 발표 시작을 목표로 자료를 완성한다.
-- **활동 이미지**: ![Decision_pt img](/img/0109_3.jpg)
+- **활동 이미지**: ![Decision_pt img](/img/unitA_2026_01_09_activity_decision.jpg)
 - **결과 보고서**: [결과](./Decision_making_related_work/README.md)
 
 
@@ -113,5 +115,5 @@ Score Board
 - **최종 결과**
   1. 차량 + 센서 TF가 포함된 하나의 URDF 파일
   2. RViz2에서 차량 모델과 TF 트리가 정상 확인
-- **활동 이미지**: ![firmware team img](/img/0109_4.jpg)
+- **활동 이미지**: ![firmware team img](/img/unitA_2026_01_09_activity_urdf.jpg)
 - **결과 보고서**: [결과](./Car_URDF/README.md)
