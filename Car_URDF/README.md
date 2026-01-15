@@ -10,6 +10,6 @@
 
 
 ## Result
-![firmware team img](/img/urdf_visualization.png)
+![urdf_visualization img](/img/urdf_visualization.png)
 
-![firmware team img](/img/7.jpg)
+![urdf_team img](/img/7.jpg)

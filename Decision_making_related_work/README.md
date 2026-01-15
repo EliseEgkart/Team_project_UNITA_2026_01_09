@@ -10,6 +10,8 @@
 
 
 ## Result
-![firmware team img](/img/road_BluePrint.png)
+![Decision_pt img](/img/Decision_pt.png)
 
-![firmware team img](/img/road_TopDownView.png)
+![road_BluePrint img](/img/road_BluePrint.png)
+
+![road_TopDownView img](/img/road_TopDownView.png)
